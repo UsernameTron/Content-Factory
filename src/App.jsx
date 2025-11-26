@@ -38,7 +38,7 @@ Short, punchy, humorous posts. Professional audience who secretly want to laugh 
 ## Output
 Just the post content. No preamble. No "Here's your post:" — just the content itself.`
   },
-  
+
   substack: {
     name: 'Substack',
     icon: '📰',
@@ -90,7 +90,7 @@ Long-form articles with smart-ass tone. Subscribers came for the intellectual ev
 ## Output
 Start directly with the title (# Title format). No preamble.`
   },
-  
+
   medium: {
     name: 'Medium',
     icon: '📝',
@@ -164,7 +164,7 @@ function App() {
     setError(null);
 
     const config = PLATFORM_PROMPTS[platform];
-    
+
     const userPrompt = `TOPIC: ${topic}
 ${context ? `\nADDITIONAL CONTEXT: ${context}` : ''}
 ${targetArgument ? `\nTARGET ARGUMENT TO DISMANTLE: ${targetArgument}` : ''}
@@ -217,17 +217,19 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
   const getCharCount = (text) => text ? text.length : 0;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-4 md:p-6">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen p-4 md:p-8">
+      <div className="max-w-5xl mx-auto space-y-8">
         {/* Header */}
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">⚔️ MirrorUniverse Pete</h1>
-          <p className="text-slate-400 text-sm md:text-base">Multi-Platform Content Factory</p>
-          <p className="text-slate-500 text-xs mt-1">One topic. Three platforms. Zero mercy.</p>
+        <div className="text-center space-y-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 drop-shadow-sm">
+            ⚔️ MirrorUniverse Pete
+          </h1>
+          <p className="text-slate-300 text-lg font-medium">Multi-Platform Content Factory</p>
+          <p className="text-slate-400 text-sm">One topic. Three platforms. Zero mercy.</p>
         </div>
 
         {/* Input Section */}
-        <div className="bg-slate-900 rounded-xl p-4 md:p-6 mb-6 border border-slate-800 shadow-xl">
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl ring-1 ring-white/5">
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">
@@ -238,10 +240,10 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
                 placeholder="The corporate obsession with 'synergy' as a substitute for strategy"
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all shadow-inner"
               />
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">
@@ -252,7 +254,7 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
                   onChange={(e) => setContext(e.target.value)}
                   placeholder="Background, industry, events..."
                   rows={2}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all"
+                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent resize-none transition-all shadow-inner"
                 />
               </div>
               <div>
@@ -264,7 +266,7 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
                   onChange={(e) => setTargetArgument(e.target.value)}
                   placeholder="Specific claim to dismantle..."
                   rows={2}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all"
+                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent resize-none transition-all shadow-inner"
                 />
               </div>
             </div>
@@ -274,13 +276,13 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
             <button
               onClick={generateAll}
               disabled={Object.values(loading).some(Boolean)}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-purple-500/25 disabled:shadow-none disabled:cursor-not-allowed transform hover:scale-105 disabled:hover:scale-100"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-700 disabled:to-slate-800 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 disabled:shadow-none disabled:cursor-not-allowed transform hover:-translate-y-0.5 disabled:hover:translate-y-0 disabled:text-slate-400"
             >
               {Object.values(loading).some(Boolean) ? (
                 <span className="flex items-center gap-2">
                   <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
                   Generating...
                 </span>
@@ -291,7 +293,7 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
           </div>
 
           {error && (
-            <div className="mt-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-red-200 text-sm">
+            <div className="mt-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-200 text-sm backdrop-blur-sm">
               {error}
             </div>
           )}
@@ -300,9 +302,9 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
         {/* Platform Cards */}
         <div className="space-y-4">
           {Object.entries(PLATFORM_PROMPTS).map(([key, config]) => (
-            <div key={key} className="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
+            <div key={key} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
               {/* Header Row */}
-              <div className={`${config.color} px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2`}>
+              <div className={`${config.color} bg-opacity-90 backdrop-blur-sm px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3`}>
                 <div className="flex items-center gap-2">
                   <span className="text-xl">{config.icon}</span>
                   <span className="font-semibold text-white">{config.name}</span>
@@ -317,13 +319,13 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
                   <button
                     onClick={() => generateContent(key)}
                     disabled={loading[key]}
-                    className="bg-white/20 hover:bg-white/30 disabled:bg-white/10 text-white text-sm px-4 py-1.5 rounded-lg transition-colors disabled:cursor-not-allowed"
+                    className="bg-black/20 hover:bg-black/40 disabled:bg-black/10 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all disabled:cursor-not-allowed border border-white/10 hover:border-white/20"
                   >
                     {loading[key] ? (
                       <span className="flex items-center gap-1">
                         <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
                       </span>
                     ) : 'Generate'}
@@ -331,7 +333,7 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
                   {outputs[key] && (
                     <button
                       onClick={() => copyToClipboard(key)}
-                      className="bg-white/20 hover:bg-white/30 text-white text-sm px-4 py-1.5 rounded-lg transition-colors"
+                      className="bg-black/20 hover:bg-black/40 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all border border-white/10 hover:border-white/20"
                     >
                       {copiedPlatform === key ? '✓ Copied!' : 'Copy'}
                     </button>
@@ -342,12 +344,11 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
               {/* Content Area */}
               {outputs[key] ? (
                 <div className="p-4">
-                  <div 
-                    className={`bg-slate-800 rounded-lg p-4 overflow-auto transition-all duration-300 ${
-                      expandedPlatform === key ? 'max-h-[600px]' : 'max-h-40'
-                    }`}
+                  <div
+                    className={`bg-black/30 rounded-xl p-6 overflow-auto transition-all duration-500 ease-in-out border border-white/5 shadow-inner ${expandedPlatform === key ? 'max-h-[600px]' : 'max-h-40'
+                      }`}
                   >
-                    <pre className="text-sm text-slate-300 whitespace-pre-wrap font-sans leading-relaxed">
+                    <pre className="text-sm md:text-base text-slate-200 whitespace-pre-wrap font-sans leading-relaxed">
                       {outputs[key]}
                     </pre>
                   </div>
@@ -359,9 +360,9 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
                   </button>
                 </div>
               ) : (
-                <div className="p-6 text-center text-slate-600 text-sm">
+                <div className="p-8 text-center text-slate-500 text-sm">
                   <p>{config.description}</p>
-                  <p className="mt-1 text-slate-700">Content will appear here after generation</p>
+                  <p className="mt-2 text-slate-600 italic">Content will appear here after generation</p>
                 </div>
               )}
             </div>
@@ -369,9 +370,9 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-slate-600 text-sm">
+        <div className="mt-12 text-center text-slate-500 text-sm pb-8">
           <p>Every word is a weapon. Make them count.</p>
-          <p className="text-xs mt-2 text-slate-700">Powered by Claude • Built for intellectual evisceration</p>
+          <p className="text-xs mt-2 text-slate-600">Powered by Claude • Built for intellectual evisceration</p>
         </div>
       </div>
     </div>
