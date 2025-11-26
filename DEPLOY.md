@@ -44,12 +44,12 @@ After deployment, you MUST set this environment variable in Netlify:
 
 | Variable | Value |
 |----------|-------|
-| `ANTHROPIC_API_KEY` | Your Anthropic API key from [console.anthropic.com](https://console.anthropic.com) |
+| `OPENAI_API_KEY` | Your OpenAI API key from [platform.openai.com](https://platform.openai.com) |
 
 **Steps:**
 1. Go to your Netlify site dashboard
 2. Site Settings → Environment Variables
-3. Add new variable: `ANTHROPIC_API_KEY`
+3. Add new variable: `OPENAI_API_KEY`
 4. Paste your API key as the value
 5. Redeploy the site
 

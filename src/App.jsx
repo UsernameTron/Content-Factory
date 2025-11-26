@@ -176,7 +176,7 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'gpt-4o',
           max_tokens: platform === 'linkedin' ? 1000 : 4000,
           system: config.systemPrompt,
           messages: [{ role: 'user', content: userPrompt }]
@@ -372,7 +372,7 @@ Generate ${platform === 'linkedin' ? 'a LinkedIn post' : `a ${config.name} artic
         {/* Footer */}
         <div className="mt-12 text-center text-slate-500 text-sm pb-8">
           <p>Every word is a weapon. Make them count.</p>
-          <p className="text-xs mt-2 text-slate-600">Powered by Claude • Built for intellectual evisceration</p>
+          <p className="text-xs mt-2 text-slate-600">Powered by OpenAI • Built for intellectual evisceration</p>
         </div>
       </div>
     </div>
